@@ -52,7 +52,7 @@ export function CustomCursor() {
       className="pointer-events-none fixed left-0 top-0 z-[70] hidden -translate-x-1/2 -translate-y-1/2 md:block"
     >
       <div
-        className={`relative flex h-20 w-20 items-center justify-center rounded-full transition-opacity duration-300 ${
+        className={`relative flex h-20 w-20 items-center justify-center rounded-full bg-paper/95 shadow-soft transition-opacity duration-300 ${
           ready ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -60,9 +60,9 @@ export function CustomCursor() {
           {chars.map((ch, i) => (
             <span
               key={i}
-              className="absolute left-1/2 top-1/2 text-[6px] font-semibold uppercase tracking-wide text-green-900"
+              className="absolute left-1/2 top-1/2 text-[6.5px] font-bold uppercase tracking-wide text-green-950"
               style={{
-                transform: `rotate(${(360 / chars.length) * i}deg) translateY(-38px)`,
+                transform: `rotate(${(360 / chars.length) * i}deg) translateY(-37px)`,
                 transformOrigin: "0 0",
               }}
             >
@@ -70,7 +70,7 @@ export function CustomCursor() {
             </span>
           ))}
         </div>
-        <span className="h-1.5 w-1.5 rounded-full bg-green-900" />
+        <span className="h-2 w-2 rounded-full bg-green-950" />
       </div>
     </div>
   );

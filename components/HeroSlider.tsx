@@ -11,7 +11,6 @@ const SLIDE_DURATION = 4200;
 
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const reduce = useReducedMotion();
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -20,12 +19,12 @@ export function HeroSlider() {
   }, []);
 
   useEffect(() => {
-    if (paused || reduce) return;
+    if (reduce) return;
     timerRef.current = setInterval(advance, SLIDE_DURATION);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [paused, reduce, advance, index]);
+  }, [reduce, advance, index]);
 
   const goTo = (i: number) => setIndex(i);
 
@@ -35,11 +34,7 @@ export function HeroSlider() {
       role="region"
       aria-roledescription="carousel"
       aria-label="Shantiban City highlights"
-      className="relative flex min-h-[100dvh] w-full items-end overflow-hidden bg-green-950"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
+      className="relative min-h-[100dvh] w-full overflow-hidden bg-green-950"
     >
       {/* Slides */}
       <div className="absolute inset-0">
@@ -51,7 +46,7 @@ export function HeroSlider() {
             aria-hidden={i !== index}
           >
             <motion.div
-              className="h-full w-full"
+              className="relative h-full w-full"
               animate={i === index && !reduce ? { scale: 1.08 } : { scale: 1 }}
               initial={{ scale: 1 }}
               transition={{ duration: SLIDE_DURATION / 1000 + 1.4, ease: "linear" }}
@@ -72,28 +67,28 @@ export function HeroSlider() {
       </div>
 
       {/* Content */}
-      <div className="container-page relative z-10 flex w-full flex-col gap-10 pb-16 pt-28 md:pb-20 md:pt-24">
-        <div className="flex max-w-xl flex-col gap-5">
+      <div className="container-page relative z-10 flex min-h-[100dvh] w-full flex-col justify-center pb-40 pt-28 md:pb-44">
+        <div className="flex max-w-xl flex-col items-start">
           <h1 className="font-display text-balance text-[2.75rem] font-semibold leading-[1.05] text-paper md:text-[4rem]">
             Shantiban City
           </h1>
-          <p className="-mt-3 font-display text-lg text-green-200 md:text-xl" lang="bn">
+          <p className="mt-2 font-display text-lg leading-none text-green-200 md:text-xl" lang="bn">
             শান্তিবন সিটি
           </p>
 
-          <p className="max-w-md text-balance text-base leading-relaxed text-green-100 md:text-lg">
+          <p className="mt-6 max-w-md text-balance text-base leading-relaxed text-green-100 md:text-lg">
             Your own plot beside a private lake in Baruipur, 20 km from your Kolkata. Move in
             today.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1">
-            <CTAButton href="#enquire" variant="primary">
-              Book a Site Visit
-            </CTAButton>
-          </div>
+          <CTAButton href="#enquire" variant="primary" className="mt-8">
+            Book a Site Visit
+          </CTAButton>
         </div>
+      </div>
 
-        {/* Caption + controls row */}
+      {/* Caption + controls row */}
+      <div className="container-page absolute inset-x-0 bottom-0 z-10 pb-8 md:pb-10">
         <div className="flex flex-col gap-5 border-t border-paper/15 pt-5 md:flex-row md:items-end md:justify-between">
           <AnimatePresence mode="wait">
             <motion.div
@@ -130,7 +125,7 @@ export function HeroSlider() {
                       className="absolute inset-y-0 left-0 bg-paper"
                       initial={{ width: "0%" }}
                       animate={{ width: "100%" }}
-                      transition={{ duration: paused || reduce ? 0.3 : SLIDE_DURATION / 1000, ease: "linear" }}
+                      transition={{ duration: reduce ? 0.3 : SLIDE_DURATION / 1000, ease: "linear" }}
                     />
                   ) : null}
                 </button>

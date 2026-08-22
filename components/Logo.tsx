@@ -1,24 +1,25 @@
-export function LogoMark({ className = "" }: { className?: string }) {
+import Image from "next/image";
+
+export function LogoMark({
+  className = "",
+  tone = "dark",
+}: {
+  className?: string;
+  tone?: "dark" | "light";
+}) {
   return (
-    <svg
-      viewBox="0 0 40 40"
-      className={className}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M20 4C20 4 27 10 27 18C27 23 24 26 20 26C16 26 13 23 13 18C13 10 20 4 20 4Z"
-        fill="currentColor"
+    <span className={`relative block shrink-0 ${className}`}>
+      <Image
+        src="/images/logo-mark.png"
+        alt=""
+        fill
+        sizes="48px"
+        priority
+        // The mark is deep green on transparent, so on dark surfaces it is
+        // flattened to a white silhouette to stay legible.
+        className={`object-contain ${tone === "light" ? "brightness-0 invert" : ""}`}
       />
-      <path
-        d="M20 26V36M20 36C20 31 15 29 10 30M20 36C20 31 25 29 30 30"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    </span>
   );
 }
 
