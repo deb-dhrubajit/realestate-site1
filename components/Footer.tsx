@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.3fr_0.7fr_1fr]">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2.5">
-              <LogoMark className="h-8 w-8 text-gold-400" />
+              <LogoMark className="h-9 w-9" tone="light" />
               <span className="font-display text-lg text-paper">
                 Shantiban <span className="italic text-gold-400">City</span>
               </span>

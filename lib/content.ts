@@ -21,32 +21,20 @@ export const project = {
 
 export const heroSlides = [
   {
-    src: "https://images.unsplash.com/photo-1631728884786-b50ef52e4163?q=80&w=1920&auto=format&fit=crop",
-    alt: "Aerial view of a landscaped green residential community",
-    eyebrow: "220 Plots, One Master Plan",
+    src: "https://images.unsplash.com/photo-1572001135898-7d20cb98965a?q=80&w=1920&auto=format&fit=crop",
+    alt: "Aerial view of Kolkata with high-rise buildings and green parkland",
+    eyebrow: "20 KM From Your Kolkata",
     headline: "A city planned around green.",
   },
   {
-    src: "https://images.unsplash.com/photo-1624192576823-30eceabaed4b?q=80&w=1920&auto=format&fit=crop",
-    alt: "Landscaped park with a lake and fountain",
+    src: "https://images.unsplash.com/photo-1650874210636-269503e6c2bc?q=80&w=1920&auto=format&fit=crop",
+    alt: "A landscaped Kolkata park with a fountain",
     eyebrow: "The Lake, At the Heart of It",
     headline: "Water, light and open sky.",
   },
   {
-    src: "https://images.unsplash.com/photo-1741745613729-05edb76543ac?q=80&w=1920&auto=format&fit=crop",
-    alt: "Tree-lined path leading to a wrought-iron gated entrance",
-    eyebrow: "24x7 Secured, Gated Entry",
-    headline: "Privacy, from the first gate.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1777938577435-33527722bb2e?q=80&w=1920&auto=format&fit=crop",
-    alt: "Luxury infinity pool at a clubhouse",
-    eyebrow: "Clubhouse, Fountain Deck & AC Gym",
-    headline: "Leisure, built into daily life.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1580795345383-9c7afd28089c?q=80&w=1920&auto=format&fit=crop",
-    alt: "Aerial view of dense green tree canopy over houses",
+    src: "https://images.unsplash.com/photo-1700210326989-7908f6de618f?q=80&w=1920&auto=format&fit=crop",
+    alt: "A tree-lined walkway through a green Kolkata park",
     eyebrow: "Pollution-Free, Fresh Air",
     headline: "Green surrounds every plot.",
   },
@@ -54,15 +42,15 @@ export const heroSlides = [
 
 export const galleryImages = {
   overview:
-    "https://images.unsplash.com/photo-1781332383806-5c5ffead0622?q=80&w=1400&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1640282898962-42bc714de660?q=80&w=1400&auto=format&fit=crop",
   seniorDeck:
-    "https://images.unsplash.com/photo-1770574656934-32f29150e535?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1609251489433-615c04e0d958?q=80&w=1200&auto=format&fit=crop",
   sportsCourt:
-    "https://images.unsplash.com/photo-1762655769373-0b4e074b38dd?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1607494629394-bcc30e45c7b2?q=80&w=1200&auto=format&fit=crop",
   lake:
-    "https://images.unsplash.com/photo-1623192318784-4659f2a5cb4a?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1673782451304-bab153644e4a?q=80&w=1200&auto=format&fit=crop",
   clubhouse:
-    "https://images.unsplash.com/photo-1680609989998-6183fcea718b?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1775993167276-743bbcde77e1?q=80&w=1200&auto=format&fit=crop",
 } as const;
 
 export type Feature = {
@@ -157,24 +145,42 @@ export const amenities: Amenity[] = [
   },
 ];
 
+export type LocationIcon =
+  | "bank"
+  | "college"
+  | "academy"
+  | "bazar"
+  | "hospital"
+  | "factory"
+  | "bypass"
+  | "railway"
+  | "junction"
+  | "metro";
+
 export type LocationItem = {
   category: "Banking" | "Education" | "Market" | "Healthcare" | "Transit";
   name: string;
   distance: string;
+  icon: LocationIcon;
 };
 
 export const locationItems: LocationItem[] = [
-  { category: "Banking", name: "ICICI Bank", distance: "0.5 km" },
-  { category: "Education", name: "Tapna More / D.C. & A.J. Academy S.E. College", distance: "1 km" },
-  { category: "Market", name: "Belapur Bazar", distance: "1 km" },
-  { category: "Healthcare", name: "Baruipur Hospital", distance: "2 km" },
-  { category: "Transit", name: "Biplab Railway Factory", distance: "2 km" },
-  { category: "Education", name: "G.M.I.T. Engineering College", distance: "4 km" },
-  { category: "Education", name: "Tele Academy", distance: "3.5 km" },
-  { category: "Transit", name: "Baruipur Bypass", distance: "6 km" },
-  { category: "Transit", name: "Baruipur Station", distance: "7 km" },
-  { category: "Transit", name: "Amtala More", distance: "8 km" },
-  { category: "Transit", name: "Tollygunge Metro Station", distance: "15 km" },
+  { category: "Banking", name: "ICICI Bank", distance: "0.5 km", icon: "bank" },
+  {
+    category: "Education",
+    name: "Tapna More / D.C. & A.J. Academy S.E. College",
+    distance: "1 km",
+    icon: "college",
+  },
+  { category: "Market", name: "Belapur Bazar", distance: "1 km", icon: "bazar" },
+  { category: "Healthcare", name: "Baruipur Hospital", distance: "2 km", icon: "hospital" },
+  { category: "Transit", name: "Biplab Railway Factory", distance: "2 km", icon: "factory" },
+  { category: "Education", name: "G.M.I.T. Engineering College", distance: "4 km", icon: "college" },
+  { category: "Education", name: "Tele Academy", distance: "3.5 km", icon: "academy" },
+  { category: "Transit", name: "Baruipur Bypass", distance: "6 km", icon: "bypass" },
+  { category: "Transit", name: "Baruipur Station", distance: "7 km", icon: "railway" },
+  { category: "Transit", name: "Amtala More", distance: "8 km", icon: "junction" },
+  { category: "Transit", name: "Tollygunge Metro Station", distance: "15 km", icon: "metro" },
 ];
 
 export const faqs = [

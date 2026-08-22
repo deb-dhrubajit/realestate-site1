@@ -1,20 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Manrope } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { CustomCursor } from "@/components/CustomCursor";
+import { IntroMascot } from "@/components/IntroMascot";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-playfair",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
+  variable: "--font-roboto",
   display: "swap",
 });
 
@@ -55,10 +49,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${manrope.variable}`}>
+    <html lang="en" className={roboto.variable}>
       <body>
         <div className="grain-overlay" aria-hidden="true" />
         <CustomCursor />
+        <IntroMascot />
         {children}
       </body>
     </html>
