@@ -51,6 +51,8 @@ export const galleryImages = {
     "https://images.unsplash.com/photo-1673782451304-bab153644e4a?q=80&w=1200&auto=format&fit=crop",
   clubhouse:
     "https://images.unsplash.com/photo-1775993167276-743bbcde77e1?q=80&w=1200&auto=format&fit=crop",
+  seatingNursery:
+    "https://images.unsplash.com/photo-1779639513853-7dcb70c0a5da?q=80&w=1200&auto=format&fit=crop",
 } as const;
 
 export type Feature = {
@@ -70,22 +72,91 @@ export type Feature = {
     | "trend-up";
   title: string;
   body: string;
+  image: string;
 };
 
+const u = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?q=80&w=600&auto=format&fit=crop`;
+
 export const features: Feature[] = [
-  { icon: "train", title: "Future Metro Connectivity", body: "A metro station is coming within 5 years." },
-  { icon: "map-pin", title: "Prime Location", body: "You're just 20 km from Kolkata." },
-  { icon: "road-horizon", title: "Excellent Connectivity", body: "Reach the city easily via Baruipur Bypass." },
-  { icon: "leaf", title: "Pollution-Free Environment", body: "Breathe fresh air in green surroundings." },
-  { icon: "speaker-slash", title: "Noise-Free Lifestyle", body: "Live away from city congestion." },
-  { icon: "tree", title: "Landscaped Green Parks", body: "Open spaces to unwind in, right outside." },
-  { icon: "first-aid", title: "Hospitals Nearby", body: "Healthcare stays within easy reach." },
-  { icon: "graduation-cap", title: "Schools & Daily Essentials", body: "Everything you need is close by." },
-  { icon: "gate", title: "Premium Gated Community", body: "Enjoy exclusive living, with privacy." },
-  { icon: "shield-check", title: "24x7 Security", body: "Your safety is looked after, always." },
-  { icon: "lightning", title: "Electricity Available", body: "Power stays on, uninterrupted." },
-  { icon: "buildings", title: "Residential & Commercial Plots", body: "Build your dream investment here." },
-  { icon: "trend-up", title: "High Future Appreciation", body: "Invest today, grow with tomorrow." },
+  {
+    icon: "train",
+    title: "Future Metro Connectivity",
+    body: "A metro station is coming within 5 years.",
+    image: u("1760816417642-6a43a279fb4c"),
+  },
+  {
+    icon: "map-pin",
+    title: "Prime Location",
+    body: "You're just 20 km from Kolkata.",
+    image: u("1572001135898-7d20cb98965a"),
+  },
+  {
+    icon: "road-horizon",
+    title: "Excellent Connectivity",
+    body: "Reach the city easily via Baruipur Bypass.",
+    image: u("1750715832512-6a4c46dc4ee7"),
+  },
+  {
+    icon: "leaf",
+    title: "Pollution-Free Environment",
+    body: "Breathe fresh air in green surroundings.",
+    image: u("1700210326989-7908f6de618f"),
+  },
+  {
+    icon: "speaker-slash",
+    title: "Noise-Free Lifestyle",
+    body: "Live away from city congestion.",
+    image: u("1651678938586-affccc71c270"),
+  },
+  {
+    icon: "tree",
+    title: "Landscaped Green Parks",
+    body: "Open spaces to unwind in, right outside.",
+    image: u("1650874210636-269503e6c2bc"),
+  },
+  {
+    icon: "first-aid",
+    title: "Hospitals Nearby",
+    body: "Healthcare stays within easy reach.",
+    image: u("1758292109543-a5c7f0c4cb9b"),
+  },
+  {
+    icon: "graduation-cap",
+    title: "Schools & Daily Essentials",
+    body: "Everything you need is close by.",
+    image: u("1780504863787-2b42d4f260d9"),
+  },
+  {
+    icon: "gate",
+    title: "Premium Gated Community",
+    body: "Enjoy exclusive living, with privacy.",
+    image: u("1660406703725-79152d5a8ff8"),
+  },
+  {
+    icon: "shield-check",
+    title: "24x7 Security",
+    body: "Your safety is looked after, always.",
+    image: u("1589935447067-5531094415d1"),
+  },
+  {
+    icon: "lightning",
+    title: "Electricity Available",
+    body: "Power stays on, uninterrupted.",
+    image: u("1552965734-5b9e868808b6"),
+  },
+  {
+    icon: "buildings",
+    title: "Residential & Commercial Plots",
+    body: "Build your dream investment here.",
+    image: u("1640282898962-42bc714de660"),
+  },
+  {
+    icon: "trend-up",
+    title: "High Future Appreciation",
+    body: "Invest today, grow with tomorrow.",
+    image: u("1708064235942-03d8a4fbbeef"),
+  },
 ];
 
 export type Amenity = {
@@ -108,7 +179,13 @@ export type Amenity = {
 };
 
 export const amenities: Amenity[] = [
-  { code: "01", title: "Seating & Nursery", body: "A shaded corner to sit and let the day slow down.", icon: "baby" },
+  {
+    code: "01",
+    title: "Seating & Nursery",
+    body: "A shaded corner to sit and let the day slow down.",
+    icon: "baby",
+    image: "seatingNursery",
+  },
   { code: "02", title: "Bare Feet Sensory Path", body: "Walk it barefoot, morning or evening.", icon: "footprints" },
   {
     code: "03",
