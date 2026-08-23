@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import { phone } from "@/lib/content";
 import { Reveal } from "./Reveal";
-import { InvestmentCalculator } from "./InvestmentCalculator";
 
 const PLOT_TYPES = ["Residential", "Commercial"] as const;
 type PlotType = (typeof PLOT_TYPES)[number];
@@ -46,19 +45,19 @@ export function CTASection() {
 
   return (
     <section id="enquire" className="bg-paper py-16 md:py-24">
-      <div className="container-page flex flex-col gap-10">
-        <Reveal className="flex max-w-2xl flex-col gap-4">
-          <h2 className="font-display text-balance text-3xl font-semibold leading-[1.1] text-green-950 md:text-[2.6rem]">
-            Come see the lake for yourself.
-          </h2>
-          <p className="text-balance leading-relaxed text-ink-soft md:text-lg">
-            Book a site visit or ask about plot availability. We&apos;ll get back to you within the
-            day.
-          </p>
-        </Reveal>
+      <div className="container-page">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14">
+          <Reveal className="flex max-w-lg flex-col gap-4">
+            <h2 className="font-display text-balance text-3xl font-semibold leading-[1.1] text-green-950 md:text-[2.6rem]">
+              Come see the lake for yourself.
+            </h2>
+            <p className="text-balance leading-relaxed text-ink-soft md:text-lg">
+              Book a site visit or ask about plot availability. We&apos;ll get back to you within
+              the day.
+            </p>
+          </Reveal>
 
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <Reveal>
+          <Reveal delay={0.1}>
             <form
               onSubmit={handleSubmit}
               className="flex h-full flex-col gap-5 rounded-xl border border-green-950/10 bg-paper-alt p-6 md:p-8"
@@ -176,10 +175,6 @@ export function CTASection() {
                 Book a Site Visit
               </button>
             </form>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <InvestmentCalculator />
           </Reveal>
         </div>
       </div>

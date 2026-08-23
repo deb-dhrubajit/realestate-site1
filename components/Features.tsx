@@ -14,11 +14,11 @@ function MarqueeRow({
 }) {
   const loop = [...items, ...items];
   return (
-    <div className="group overflow-hidden py-2">
+    <div className="overflow-hidden py-2">
       <div
         className={`flex w-max items-start gap-10 md:gap-14 ${
           direction === "left" ? "animate-marquee-left" : "animate-marquee-right"
-        } group-hover:[animation-play-state:paused]`}
+        }`}
       >
         {loop.map((feature, i) => (
           <figure
@@ -57,7 +57,7 @@ export function Features() {
         />
       </div>
 
-      <div className="mt-6 flex flex-col gap-10">
+      <div className="mt-6 flex flex-col gap-16 md:gap-20">
         <MarqueeRow items={rowA} direction="left" />
         <MarqueeRow items={rowB} direction="right" />
       </div>
