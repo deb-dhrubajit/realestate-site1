@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { phone } from "@/lib/content";
 
 /** How long the mascot holds at centre-screen before flying to the corner. */
-const INTRO_HOLD_MS = 90;
+const INTRO_HOLD_MS = 1500;
 
 /** Canvas working resolution. The source video is 720x1280 (9:16). */
 const CANVAS_W = 360;
