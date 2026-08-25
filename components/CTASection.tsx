@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import { phone } from "@/lib/content";
+import { supabase } from "@/lib/supabaseClient";
 import { Reveal } from "./Reveal";
 
 const PLOT_TYPES = ["Residential", "Commercial"] as const;
@@ -18,13 +19,23 @@ export function CTASection() {
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !mobile.trim()) {
       setError("Share your name and a mobile number so we can reach you.");
       return;
     }
     setError("");
+
+    // Best-effort: a lead should still reach us over WhatsApp even if the
+    // database write fails, so this never blocks that fallback.
+    await supabase.from("contact_submissions").insert({
+      name: name.trim(),
+      mobile: `+91 ${mobile.trim()}`,
+      email: email.trim() || null,
+      plot_type: plotType,
+      message: message.trim() || null,
+    });
 
     const text = [
       `Hi, I'm interested in Shantiban City.`,
