@@ -7,7 +7,7 @@ export const phone = {
 export const project = {
   name: "Shantiban City",
   fullName: "Mrityika Shantiban City",
-  builder: "Mrityika Realtrers",
+  builder: "Mrityika Realters",
   locality: "Tapna, Baruipur, South 24 Parganas",
   distanceFromKolkata: "20 km",
   possession: "Ready to Move",
@@ -53,6 +53,10 @@ export const galleryImages = {
     "https://images.unsplash.com/photo-1775993167276-743bbcde77e1?q=80&w=1200&auto=format&fit=crop",
   seatingNursery:
     "https://images.unsplash.com/photo-1779639513853-7dcb70c0a5da?q=80&w=1200&auto=format&fit=crop",
+  bbqDeck: "/images/amenity-bbq-deck.jpg",
+  fishingDeck: "/images/amenity-fishing-deck.jpg",
+  clubHouseFountain: "/images/amenity-club-house-fountain.jpg",
+  clubHouse: "/images/amenity-club-house.jpg",
 } as const;
 
 export type Feature = {
@@ -176,7 +180,16 @@ export type Amenity = {
     | "houseLine"
     | "barbell";
   image?: keyof typeof galleryImages;
+  video?: string;
 };
+
+// The player.cloudinary.com iframe embed leaves a bare, src-less <video> in
+// its initial HTML until its own JS loads and swaps a real source in — a
+// second layer of third-party JS to depend on, nested inside our own
+// GSAP-transformed card. The direct delivery URL is a real, immediately
+// playable video file, so a native <video> tag here is far more reliable.
+const cldVideo = (publicId: string) =>
+  `https://res.cloudinary.com/eranwpa1/video/upload/f_mp4/${publicId}.mp4`;
 
 export const amenities: Amenity[] = [
   {
@@ -186,15 +199,27 @@ export const amenities: Amenity[] = [
     icon: "baby",
     image: "seatingNursery",
   },
-  { code: "02", title: "Bare Feet Sensory Path", body: "Walk it barefoot, morning or evening.", icon: "footprints" },
+  {
+    code: "02",
+    title: "Bare Feet Sensory Path",
+    body: "Walk it barefoot, morning or evening.",
+    icon: "footprints",
+    video: cldVideo("Initial_Scene_-_2026-08-24_202608250253"),
+  },
   {
     code: "03",
     title: "Senior Citizen Deck",
     body: "A quiet, shaded stretch built for slower mornings.",
     icon: "personArmchair",
-    image: "seniorDeck",
+    video: cldVideo("Initial_Scene_-_2026-08-24_202608250230"),
   },
-  { code: "04", title: "Orchid Garden", body: "A pocket of colour you'll want to walk through daily.", icon: "flowerLotus" },
+  {
+    code: "04",
+    title: "Orchid Garden",
+    body: "A pocket of colour you'll want to walk through daily.",
+    icon: "flowerLotus",
+    video: cldVideo("Initial_Scene_-_2026-08-24_202608250115"),
+  },
   {
     code: "05",
     title: "Lake Area with Fountain",
@@ -202,8 +227,20 @@ export const amenities: Amenity[] = [
     icon: "waves",
     image: "lake",
   },
-  { code: "06", title: "Sitting Deck with BBQ Zone", body: "Bring the evening adda outdoors.", icon: "cookingPot" },
-  { code: "07", title: "Fishing Deck", body: "Cast a line without leaving home.", icon: "fish" },
+  {
+    code: "06",
+    title: "Sitting Deck with BBQ Zone",
+    body: "Bring the evening adda outdoors.",
+    icon: "cookingPot",
+    image: "bbqDeck",
+  },
+  {
+    code: "07",
+    title: "Fishing Deck",
+    body: "Cast a line without leaving home.",
+    icon: "fish",
+    image: "fishingDeck",
+  },
   {
     code: "08",
     title: "Multi Sport Court",
@@ -211,8 +248,20 @@ export const amenities: Amenity[] = [
     icon: "basketball",
     image: "sportsCourt",
   },
-  { code: "09", title: "Club House with Fountain", body: "Where the evenings gather, by the water.", icon: "martini" },
-  { code: "10", title: "Club House", body: "Your own space to host, meet and celebrate Pujo with the neighbourhood.", icon: "houseLine" },
+  {
+    code: "09",
+    title: "Club House with Fountain",
+    body: "Where the evenings gather, by the water.",
+    icon: "martini",
+    image: "clubHouseFountain",
+  },
+  {
+    code: "10",
+    title: "Club House",
+    body: "Your own space to host, meet and celebrate Pujo with the neighbourhood.",
+    icon: "houseLine",
+    image: "clubHouse",
+  },
   {
     code: "11",
     title: "Club House with AC Gym",
@@ -283,7 +332,7 @@ export const faqs = [
   },
   {
     q: "What is the name of the builder constructing this project?",
-    a: "Mrityika Realtrers.",
+    a: "Mrityika Realters.",
   },
   {
     q: "How are the reviews for Mrityika Shantiban City's location?",

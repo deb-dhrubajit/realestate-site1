@@ -34,13 +34,31 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-4 z-40 flex justify-center px-4 md:top-6">
       <div
-        className="grid w-full max-w-5xl grid-cols-[auto_1fr_auto] items-center gap-4 rounded-full border border-white/60 bg-white/70 px-3 py-2 backdrop-blur-xl md:grid-cols-[1fr_auto_1fr] md:px-4"
-        style={{
-          boxShadow:
-            "inset 0 1px 0 rgba(255,255,255,0.8), inset 0 0 0 1px rgba(255,255,255,0.25), 0 12px 32px -14px rgba(15,26,18,0.22)",
-        }}
+        className="relative grid w-full max-w-5xl grid-cols-[auto_1fr_auto] items-center gap-4 overflow-hidden rounded-full px-3 py-2 md:grid-cols-[1fr_auto_1fr] md:px-4"
+        style={{ boxShadow: "0 12px 32px -14px rgba(15,26,18,0.28)" }}
       >
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+        {/* Liquid-glass shell: a refracted blur layer, a light tint, and an
+            inset edge highlight — content sits in its own layer above them
+            so the distortion never touches the nav text. */}
+        <div
+          className="absolute inset-0 z-0 rounded-full"
+          style={{
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
+            filter: "url(#glass-distortion)",
+            isolation: "isolate",
+          }}
+        />
+        <div className="absolute inset-0 z-10 rounded-full bg-white/45" />
+        <div
+          className="absolute inset-0 z-20 rounded-full"
+          style={{
+            boxShadow:
+              "inset 1.5px 1.5px 1px 0 rgba(255,255,255,0.7), inset -1px -1px 1px 1px rgba(255,255,255,0.4)",
+          }}
+        />
+
+        <nav className="relative z-30 hidden items-center gap-6 lg:flex" aria-label="Primary">
           {leftLinks.map((link) => (
             <a
               key={link.href}
@@ -52,12 +70,15 @@ export function Header() {
           ))}
         </nav>
 
-        <a href="#top" className="flex items-center justify-center gap-2 justify-self-start md:justify-self-center">
+        <a
+          href="#top"
+          className="relative z-30 flex items-center justify-center gap-2 justify-self-start md:justify-self-center"
+        >
           <LogoMark className="h-9 w-9" />
           <Wordmark tone="dark" />
         </a>
 
-        <div className="flex items-center justify-end gap-5">
+        <div className="relative z-30 flex items-center justify-end gap-5">
           <nav className="hidden items-center gap-6 lg:flex" aria-label="Secondary">
             {rightLinks.map((link) => (
               <a

@@ -30,6 +30,8 @@
 
   --font-display: var(--font-roboto), Helvetica Neue, Helvetica, Ubuntu, "Segoe UI", sans-serif;
   --font-sans: var(--font-roboto), Helvetica Neue, Helvetica, Ubuntu, "Segoe UI", sans-serif;
+  --font-heading-serif: var(--font-bodoni), "Times New Roman", serif;
+  --font-script: var(--font-beau-rivage), cursive;
 
   --radius-panel: 0.25rem;
   --radius-card: 0.25rem;
@@ -66,6 +68,14 @@
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
+  }
+
+  .font-heading-serif {
+    font-family: var(--font-heading-serif);
+  }
+
+  .font-script {
+    font-family: var(--font-script);
   }
 
   .container-page {
@@ -133,5 +143,37 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ElevenLabs' widget styles its own custom element as `position:fixed;
+   inset:0` internally (a full-viewport host so its expanded chat state has
+   room to fill the screen), which ignores wherever we mount it and made it
+   collide with the mascot at the default corner both land on. This has
+   higher specificity than a plain tag selector would on its own, so the
+   override needs !important to actually win — it shrinks the host to its
+   own content and anchors it beside the mascot instead. */
+elevenlabs-convai {
+  position: fixed !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  overflow: visible !important;
+  /* An explicit box, not `auto`: the widget's own pill is itself positioned
+     out of normal flow inside its shadow root, so a shrink-to-fit host has
+     nothing in-flow to measure against and collapses toward zero width —
+     which is what was clipping the icon row. A generously sized box gives
+     its internal (likely percentage-based) layout real room to fill. */
+  width: 22rem !important;
+  height: 8rem !important;
+  bottom: 6rem !important;
+  right: 5.25rem !important;
+  z-index: 102 !important;
+}
+
+@media (min-width: 768px) {
+  elevenlabs-convai {
+    bottom: 3.5rem !important;
+    right: 7.5rem !important;
   }
 }

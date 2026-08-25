@@ -12,7 +12,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-paper py-16 md:py-24">
+    <section id="faq" className="bg-paper py-12 md:py-20">
       <div className="container-page flex flex-col gap-10">
         <SectionHeading
           title="Questions, answered."

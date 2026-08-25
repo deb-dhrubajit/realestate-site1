@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import { phone } from "@/lib/content";
 import { Reveal } from "./Reveal";
@@ -44,12 +45,21 @@ export function CTASection() {
     "w-full rounded-lg border border-green-950/15 bg-paper px-4 py-3.5 text-green-950 placeholder:text-ink-faint transition-colors focus:border-green-800 focus:outline-none focus:ring-2 focus:ring-green-800/15";
 
   return (
-    <section id="enquire" className="bg-paper py-16 md:py-24">
-      <div className="container-page">
+    <section id="enquire" className="relative z-0 overflow-hidden bg-paper py-12 md:py-20">
+      <Image
+        src="/images/contact-bg.png"
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        className="-z-10 object-cover opacity-[0.24]"
+      />
+
+      <div className="container-page relative z-10">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14">
           <Reveal className="flex max-w-lg flex-col gap-4">
             <h2 className="font-display text-balance text-3xl font-semibold leading-[1.1] text-green-950 md:text-[2.6rem]">
-              Come see the lake for yourself.
+              Come see the plot for yourself.
             </h2>
             <p className="text-balance leading-relaxed text-ink-soft md:text-lg">
               Book a site visit or ask about plot availability. We&apos;ll get back to you within
@@ -60,7 +70,7 @@ export function CTASection() {
           <Reveal delay={0.1}>
             <form
               onSubmit={handleSubmit}
-              className="flex h-full flex-col gap-5 rounded-xl border border-green-950/10 bg-paper-alt p-6 md:p-8"
+              className="flex h-full flex-col gap-5 rounded-xl border border-green-950/10 bg-paper-alt p-6 shadow-lifted md:p-8"
               noValidate
             >
               <div className="grid gap-5 sm:grid-cols-2">

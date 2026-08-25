@@ -38,7 +38,7 @@ const order: LocationItem["category"][] = [
 
 export function LocationAdvantages() {
   return (
-    <section id="location" className="bg-paper py-16 md:py-24">
+    <section id="location" className="bg-paper py-12 md:py-20">
       <div className="container-page flex flex-col gap-12">
         <SectionHeading
           eyebrow="Location Advantages"

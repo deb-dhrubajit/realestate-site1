@@ -38,7 +38,7 @@ export function Wordmark({
         Shantiban <span className="italic text-gold-600">City</span>
       </span>
       <span className={`text-[0.6rem] uppercase tracking-[0.28em] ${sub} mt-0.5`}>
-        Mrityika Realtrers
+        Mrityika Realters
       </span>
     </span>
   );

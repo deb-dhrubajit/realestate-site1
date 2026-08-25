@@ -49,7 +49,7 @@ function MarqueeRow({
 
 export function Features() {
   return (
-    <section className="bg-paper py-16 md:py-24">
+    <section className="bg-paper py-12 md:py-20">
       <div className="container-page flex flex-col gap-10">
         <SectionHeading
           title="Thirteen reasons to choose this address."

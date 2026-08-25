@@ -219,7 +219,7 @@ export function InvestmentCalculator() {
         <p className="text-xs leading-relaxed text-ink-faint">
           Indicative only. The growth rate above is a figure you choose to explore a
           &ldquo;what if&rdquo;, not a forecast, offer or assurance of returns from{" "}
-          {"Mrityika Realtrers"}. Actual prices, loan terms and future value will differ. Please
+          {"Mrityika Realters"}. Actual prices, loan terms and future value will differ. Please
           confirm current rates with our team.
         </p>
       </div>

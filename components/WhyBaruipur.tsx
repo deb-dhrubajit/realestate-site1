@@ -8,7 +8,7 @@ const stats = [
 
 export function WhyBaruipur() {
   return (
-    <section className="bg-paper py-16 md:py-24">
+    <section className="bg-paper py-12 md:py-20">
       <div className="container-page flex flex-col gap-14">
         <Reveal className="mx-auto flex max-w-3xl flex-col gap-6 text-center">
           <h2 className="font-display text-balance text-3xl font-semibold leading-[1.15] text-green-950 md:text-[2.4rem]">

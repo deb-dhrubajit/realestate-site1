@@ -69,10 +69,18 @@ export function HeroSlider() {
       {/* Content */}
       <div className="container-page relative z-10 flex min-h-[100dvh] w-full flex-col justify-center pb-40 pt-28 md:pb-44">
         <div className="flex max-w-xl flex-col items-start">
-          <h1 className="font-display text-balance text-[2.75rem] font-semibold leading-[1.05] text-paper md:text-[4rem]">
-            Shantiban City
+          <h1 className="flex flex-col items-start">
+            <span className="font-heading-serif text-[3.25rem] font-medium uppercase leading-[0.95] tracking-tight text-paper md:text-[5.5rem]">
+              Shantiban
+            </span>
+            <span className="font-heading-serif text-[3.25rem] font-medium uppercase leading-[0.95] tracking-tight text-paper md:text-[5.5rem]">
+              City
+            </span>
+            <span className="font-script -mt-1 text-[2.75rem] leading-none text-paper md:-mt-3 md:text-[4.5rem]">
+              Baruipur
+            </span>
           </h1>
-          <p className="mt-2 font-display text-lg leading-none text-green-200 md:text-xl" lang="bn">
+          <p className="mt-3 font-display text-lg leading-none text-green-200 md:text-xl" lang="bn">
             শান্তিবন সিটি
           </p>
 

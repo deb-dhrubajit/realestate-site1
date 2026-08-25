@@ -12,7 +12,7 @@ const specs = [
 
 export function MasterPlan() {
   return (
-    <section id="master-plan" className="bg-paper py-16 md:py-24">
+    <section id="master-plan" className="bg-paper py-12 md:py-20">
       <div className="container-page flex flex-col gap-10">
         <SectionHeading
           eyebrow="The Master Plan"
